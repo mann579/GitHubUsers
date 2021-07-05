@@ -17,7 +17,7 @@ class UsersDataModel {
     
     func load(since: Int32 = 0) {
         self.since = since
-        if !NetworkMonitor().isConnectedToNetwork() {
+        if NetworkMonitor().isConnectedToNetwork() {
             networkManager.getUsers(since: Int(since), pageSize: pageSize) { usersResponse, error in
                 guard let users = usersResponse else { return }
                 self.users = users
